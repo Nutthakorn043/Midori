@@ -10,10 +10,19 @@ const routes = [
     name: 'Home',
     component: Home
   },
+  {path: '/abouts',
+  name: 'abouts',
+  component: () => import('../views/abouts.vue')
+},
   {
     path: '/about',
     name: 'About',
     component: () => import('../views/About.vue')
+  },
+  {
+    path: '/Stories',
+    name: 'Storiest',
+    component: () => import('../views/Stories.vue')
   },
   {
     path: '/login',

@@ -1,38 +1,75 @@
 <template>
   <div id="app">
     <div id="navbar">
-  <a href="/" id="logo"><img src="https://drive.google.com/uc?id=1YomJCZwim6dMXB64QNxlWHHM_f2Q27TK" style="max-width: 10rem;" alt=""></a>
-  <div id="navbar-right">
-    <a href="/product">Shop all</a>
-    <a href="#about">About</a>
-    <a href="/register">Contact</a>
-    <a href="/login"><b-icon icon="person-circle"></b-icon> Login</a>
-    <a><router-link to="/about"><b-icon icon="cart3"></b-icon>Basket</router-link></a>
-  </div>
-</div>
+      <b-navbar
+        toggleable
+        type="dark"
+        variant="faded"
+        class="shadow p-3  bg-white rounded"
+      >
+        <a href="/" id="logo"
+          ><img
+            src="https://drive.google.com/uc?id=1YomJCZwim6dMXB64QNxlWHHM_f2Q27TK"
+            style="max-width: 10rem;"
+            alt=""
+        /></a>
+        <div id="navbar-right">
+          <a href="/product">Shop all</a>
+          <a href="/abouts">About</a>
+          <a href="/Stories">Stories</a>
+          <a href="/register">Contact</a>
+        </div>
+      </b-navbar>
+      <b-navbar>
+        <div class="wow">
+          <a
+            ><router-link to="/login"
+              ><b-icon icon="person-circle"></b-icon> Login</router-link
+            ></a
+          >
+          <a
+            ><router-link to="/about"
+              ><b-icon icon="basket"></b-icon> {{ $store.state.i1.amount+$store.state.i2.amount+$store.state.i3.amount+$store.state.i4.amount+$store.state.i5.amount+$store.state.i6.amount+$store.state.i7.amount+$store.state.i8.amount+$store.state.i9.amount+$store.state.i10.amount+$store.state.i11.amount+
+                $store.state.i12.amount+$store.state.i13.amount+$store.state.i14.amount+$store.state.i15.amount+$store.state.i16.amount+$store.state.i17.amount+$store.state.i18.amount+$store.state.i19.amount+$store.state.i20.amount }} </router-link
+          ></a>
+        </div>
+      </b-navbar>
+    </div>
+
     <router-view />
     <div class="footer">
-  <p>Footer</p>
-</div>
-</div>
-  
-  
+      <img src="https://drive.google.com/uc?id=1YomJCZwim6dMXB64QNxlWHHM_f2Q27TK" style="max-width: 10rem;" alt="">
+    </div>
+  </div>
 </template>
-
+<script>
+import firebase from "firebase/app";
+export default {
+  data() {
+    return {
+      name: "",
+      email: "",
+      photoUrl: "",
+    };
+  },
+  beforeCreate() {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user != null) {
+        // User is signed in.
+        // show email name image
+        this.name = user.displayName;
+        this.email = user.email;
+        this.photoUrl = user.photoURL;
+      } else {
+        // No user is signed in.
+        // return login
+        this.$router.replace("/login");
+      }
+    });
+  },
+};
+</script>
 <style>
-#navbar {
-  overflow: hidden;
-  background-color: #f1f1f1;
-  padding: 90px 10px; /* Large padding which will shrink on scroll (using JS) */
-  transition: 0.4s; /* Adds a transition effect when the padding is decreased */
-  position: fixed; /* Sticky/fixed navbar */
-  width: 100%;
-  top: 0; /* At the top */
-  z-index: 99;
-  height: 1px;
-}
-
-/* Style the navbar links */
 #navbar a {
   float: left;
   color: black;
@@ -42,45 +79,7 @@
   font-size: 18px;
   line-height: 25px;
   border-radius: 4px;
-}
-
-/* Style the logo */
-#navbar #logo {
-  font-size: 35px;
-  font-weight: bold;
-  transition: 0.4s;
-}
-
-/* Links on mouse-over */
-#navbar a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-/* Style the active/current link */
-#navbar a.active {
-  background-color: dodgerblue;
-  color: white;
-}
-
-/* Display some links to the right */
-#navbar-right {
-  float: right;
-}
-
-/* Add responsiveness - on screens less than 580px wide, display the navbar vertically instead of horizontally */
-@media screen and (max-width: 580px) {
-  #navbar {
-    padding: 20px 10px !important; /* Use !important to make sure that JavaScript doesn't override the padding on small screens */
-  }
-  #navbar a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-  #navbar-right {
-    float: none;
-  }
+  margin-block-end: 1px;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -122,8 +121,7 @@
   color: white;
   text-align: center;
 }
-.hh1{
+.hh1 {
   font-variant: normal;
 }
 </style>
-

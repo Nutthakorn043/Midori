@@ -6,11 +6,11 @@
         <div class="col-md-8 offset-md-2 info bg-custom">
           <h1 class="text-center">Midori</h1>
           <p class="text-center">
-            Lorem ipsum dolor sit amet
+            ยินดีต้อนรับลูกค้าทุกท่าน
           </p>
-          <p class="text-center">consectetur adipisicing</p>
+          <p class="text-center">เข้าสู่ร้านขายเฟอร์นิเจอร์ระดับโลก</p>
           <b-container class="text-center">
-            <b-button squared variant="outline-light" size="lg"
+            <b-button squared variant="outline-light" size="lg" href="/product"
               >Shop Now</b-button
             >
             
@@ -23,17 +23,19 @@
     <h1 class="center1"><b-icon icon="bookmark-star"></b-icon> Sale</h1>
     <hr />
     <h1 class="center2"> Bestsellers</h1>
-
+    <div class="container">
     <div class="team-area">
         <div class="hovereffect">
-          <img
-            class="img-responsive"
-            src="https://www.ikea.com/th/th/images/products/grimsbu-bed-frame-grey__0750212_pe747234_s5.jpg?f=s"
-            alt=""
-          />
+          <img :src="$store.state.i1.image"/>
           <div class="overlay">
             <h2>Bestsellers</h2>
-            <a class="info" href="#">ข้อมูลด่วน</a>
+            <a class="info"     v-on:click="
+                      ($store.state.i1.amount += 1),
+                        $store.state.say(
+                          'เพิ่มสินค้าสำเร็จ สามารถตรวจสอบแก้ไขสินค้าได้ในตระกร้า'
+                        )
+                    "
+                  > เพิ่มสินค้า</a>
           </div>
            <b-card-text class="center3">
             GRIMSBU กริมส์บู
@@ -43,14 +45,17 @@
         </div>
   
         <div class="hovereffect">
-          <img
-            class="img-responsive"
-            src="https://www.ikea.com/th/th/images/products/tarva-bed-frame-pine-luroey__0861223_pe555571_s5.jpg?f=s"
-            alt=""
-          />
+         <img :src="$store.state.i2.image"/>
           <div class="overlay">
             <h2>Bestsellers</h2>
-            <a class="info" href="#">ข้อมูลด่วน</a>
+            <a class="info"                     v-on:click="
+                      ($store.state.i2.amount += 1),
+                        $store.state.say(
+                          'เพิ่มสินค้าสำเร็จ สามารถตรวจสอบแก้ไขสินค้าได้ในตระกร้า'
+                        )
+                    "
+                  >
+              เพิ่มสินค้า</a>
           </div>
             <b-card-text class="center3">
               TARVA ทาร์ฟวา
@@ -59,14 +64,16 @@
           </b-card-text>
         </div>
         <div class="hovereffect">
-          <img
-            class="img-responsive"
-            src="https://www.ikea.com/th/th/images/products/songesand-bed-frame-with-2-storage-boxes-white-luroey__0734692_pe739587_s5.jpg?f=s"
-            alt=""
-          />
+          <img :src="$store.state.i3.image"/>
           <div class="overlay">
             <h2>Bestsellers</h2>
-            <a class="info" href="#">ข้อมูลด่วน</a>
+            <a class="info"   v-on:click="
+                      ($store.state.i3.amount += 1),
+                        $store.state.say(
+                          'เพิ่มสินค้าสำเร็จ สามารถตรวจสอบแก้ไขสินค้าได้ในตระกร้า'
+                        )
+                    "
+                  >เพิ่มสินค้า</a>
           </div>
             <b-card-text class="center3">
               SONGESAND ซองเงซันด์
@@ -75,14 +82,16 @@
           </b-card-text>
         </div>
         <div class="hovereffect">
-          <img
-            class="img-responsive"
-            src="https://www.ikea.com/th/th/images/products/hemnes-day-bed-w-3-drawers-2-mattresses-white-malfors-firm__0857890_pe632055_s5.jpg?f=s"
-            alt=""
-          />
+          <img :src="$store.state.i4.image"/>
           <div class="overlay">
             <h2>Bestsellers</h2>
-            <a class="info" href="#">ข้อมูลด่วน</a>
+            <a class="info"  v-on:click="
+                      ($store.state.i4.amount += 1),
+                        $store.state.say(
+                          'เพิ่มสินค้าสำเร็จ สามารถตรวจสอบแก้ไขสินค้าได้ในตระกร้า'
+                        )
+                    "
+                  >เพิ่มสินค้า</a>
           </div>
             <b-card-text class="center3">
               HEMNES เฮมเนส
@@ -91,8 +100,8 @@
           </b-card-text>
         </div>
       </div>
-        
-  <hr />
+      </div>  
+ 
     <h1 class="center6"> Brands & Designers</h1>
       
       <b-card-group class="center4">
@@ -302,48 +311,6 @@
 .h-6{
     grid-row: span 6;
 }
-.imgIG {
-  width: 100%;
-  max-width: 120rem;
-  margin: auto;
-  padding: 0 1.5rem;
-}
-.img-gallery {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: auto;
-  grid-gap: 1.5rem;
-}
-.img-gallery a{
- width: 100%;
- height: 25rem;
- background-position: center;
- background-repeat: no-repeat;
- background-size: cover;
- position: relative;
- display: flex;
- align-items: center;
- justify-content: center;
-  }
-  .img-gallery a::before{
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 8);
-    opacity: 0;
-    transition: opacity .5s;
-  }
-  .img-gallery a:hover,
-  .img-gallery a:hover::before{
-    opacity: 1;
-  }
-  .img1{
-    grid-area: img-1;
-    background-image: url(https://static.parastorage.com/services/instagram-cdn/1.659.0/assets/ig-templates-accounts/Editor/Online%20Furniture%20Store/01.jpg);
-  }
 /* เอฟเฟครูป */
 .hovereffect {
   width: 100%;
@@ -374,7 +341,7 @@
 }
 .team-area {
   display: flex;
-  width: 90%;
+  width: 100%;
   justify-content: space-around;
 
 }
